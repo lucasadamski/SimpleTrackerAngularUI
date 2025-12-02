@@ -1,0 +1,27 @@
+<div class="parent">
+    <div class="login-container">
+        <div class="profile-img"></div>
+        <h2>Simple Tracker</h2>
+        <p>Please login</p>
+
+        {{ loginObj.email }}
+    
+        <form>
+            <div class="input-field">
+                <i>👤</i>
+                <input type="text" placeholder="username" [(ngModel)]="loginObj.login" name="login">
+            </div>
+    
+            <div class="input-field">
+                <i>🔒</i>
+                <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password" required>
+            </div>
+    
+            <button class="btn" type="button" (click)="onLogin()">Login</button>
+    
+            <div class="options">
+                Forgot password? <a href="#">or Sign Up</a>
+            </div>
+        </form>
+    </div>
+</div>

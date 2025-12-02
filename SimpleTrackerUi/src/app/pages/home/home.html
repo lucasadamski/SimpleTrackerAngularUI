@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+
+{{ entries[0].Value }}
+
+<div class="container-fluid">
+    <div class="row p-2">
+        @for (item of entries; track $index) {
+            <div class="col m-1 p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-5">
+                <p>{{ item.value }} {{ item.unit }} of {{ item.activity }} was added at {{ item.dateAdded }}</p>
+            </div>
+        }
+
+    </div>
+</div>
+
+<h2>Button example</h2> 
+<button (click)="postNewEntry()"> Create new entry </button>
+
+<h3>Update example</h3> 
+<button (click)="updateEntry()">Update</button>
+
+<h3>Delete example</h3>
+<button (click)="deleteEntry()" class="btn btn-primary">Delete</button>
+
+<button class="btn btn-primary">Bootstrap Button</button>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { UserApi } from '../../user-api/user-api';
+import { Auth } from '../../services/auth';
+import { NgToastService } from 'ng-angular-popup';
+import { UserStore } from '../../services/user-store';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +13,32 @@ import { UserApi } from '../../user-api/user-api';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {
+export class Login implements OnInit {
   
   loginObj: any = {
     login: '', 
     password: ''
   }
-  constructor(private http : HttpClient, private userApi : UserApi) { }
+
+  public loginForm!: FormGroup;
+
+  constructor(
+    private http: HttpClient, 
+    private userApi: UserApi,
+    private formBuilder: FormBuilder,
+    private auth: Auth,
+    private toast: NgToastService,
+    private store: UserStore
+  ) { }
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+
 
 
     onLogin() {

@@ -21,8 +21,8 @@ export class Auth {
     return jwtHelper.decodeToken(token);
   }
 
-  getToken() {
-    localStorage.getItem('token');
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
   storeToken(tokenValue: string) {

@@ -14,10 +14,7 @@ export class UserApi {
   constructor(private http : HttpClient) { }
 
   loginUser(data : any) : Observable<any> {
-
-    
     console.log('UserApi');
-
     return this.http.post<any>(this.url, data);
   }
 

@@ -1,40 +1,23 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { HttpInterceptorFn } from '@angular/common/http';
 import { Auth } from '../services/auth';
-import { Router } from '@angular/router';
-import { NgToastService } from 'ng-angular-popup';
-import { TokenApiModel } from '../../models/token-api.model';
+import { inject } from '@angular/core';
 
-
-
-@Injectable()
-export class TokenInterceptor implements HttpInterceptor {
-  constructor(private auth: Auth, private router: Router, private toast: NgToastService) {
-
+export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
+  const auth = inject(Auth);
+  const token = auth.getToken();
+  
+  if (token) {
+    req = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
 
-  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const myToken = this.auth.getToken();
-
-    if(myToken){
-      req = req.clone({
-        setHeaders: {Authorization:`Bearer ${myToken}`}
-      })
-    }
-
-    return next.handle(req).pipe(
-    catchError((err: any) => {
-      this.toast.danger("Token unauthorized");
-
-      // always return an Observable
-      return throwError(() => err);
-    })
-  );
+  console.log("interceptor called");
+  
+  return next(req);
+};
 
 
-    
-  }
 
-
-}

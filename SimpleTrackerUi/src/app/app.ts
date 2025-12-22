@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Entry } from './entry';
 import { SendEntry } from './send-entry';
-import { PostData } from '../models/post-data.model';
+import { PostData } from './models/post-data.model';
 
 @Component({
   selector: 'app-root',

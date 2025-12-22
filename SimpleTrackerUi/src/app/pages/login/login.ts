@@ -75,6 +75,8 @@ export class Login implements OnInit {
       next: (response) => {
         console.log('response successful: ' + response);
         this.router.navigate(['home']);
+        this.auth.storeToken(response.token);
+        // write token to storage 
       },
       error: (response) => {
         console.error('response error: ' + response);

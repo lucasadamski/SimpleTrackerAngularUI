@@ -1,13 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { environment } from '../../../environments/environment';
-import { UserApi } from '../../user-api/user-api';
 import { Auth } from '../../services/auth';
 import { UserStore } from '../../services/user-store';
 import { Router } from '@angular/router';
 import ValidateForm from '../../helpers/validationform';
 import { NgToastService } from 'ng-angular-popup';
+import { User } from '../../services/user';
 
 @Component({
   selector: 'app-login',
@@ -28,8 +26,7 @@ export class Login implements OnInit {
   eyeIcon: string = 'fa-eye-slash';
 
   constructor(
-    private http: HttpClient, 
-    private userApi: UserApi,
+    private userApi: User,
     private formBuilder: FormBuilder,
     private auth: Auth,
     private router: Router,

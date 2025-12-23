@@ -1,6 +1,4 @@
-export interface Entry {
+export interface EntryDto {
     value: number;
-    unit: string;
-    activity: string;
-    dateAdded: Date;
+    activityId: number;
 }

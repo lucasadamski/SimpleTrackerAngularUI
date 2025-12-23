@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Entry } from '../../entry';
-import { SendEntry } from '../../send-entry';
+import { EntryDto } from '../../models/entry.model';
+import { Entry } from '../../services/entry';
+
 
 @Component({
   selector: 'app-home',
@@ -17,16 +18,19 @@ export class Home {
   public foo = 'testowy';
 
 
-  constructor(private postEntryService: SendEntry, entryService: Entry) {
+  constructor(private entryService: Entry) {
     entryService.get().subscribe(elements => {
       this.entries = elements;
     });
   }
 
   public postNewEntry() {
-    const payload = { value: 555, activityId: 3 }
+    const payload: EntryDto = {
+      value: 124,
+      activityId: 2,
+    };
 
-    this.postEntryService.postData(payload).subscribe({
+    this.entryService.postData(payload).subscribe({
       next: (response) => {
         console.log(response);
       },
@@ -38,7 +42,7 @@ export class Home {
 
   updateEntry() {
     const postPayload = { id: 6, value: 1234 }
-    this.postEntryService.putData(postPayload).subscribe({
+    this.entryService.putData(postPayload).subscribe({
       next: (response) => {
         console.log(response);
       },
@@ -49,8 +53,8 @@ export class Home {
   }
 
   deleteEntry() {
-    var id = 6;
-    this.postEntryService.deleteData(id).subscribe({
+    var id = 6;     // hardcoded !!!
+    this.entryService.deleteData(id).subscribe({
       next: (response) => {
         console.log('Delete sucessful ' + response);
       },

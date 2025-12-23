@@ -21,6 +21,20 @@
     </div>
 </div>
 
+<form>
+  <h4>mat-select</h4>
+  <mat-form-field>
+    <mat-label>Choose Activity</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="activity">
+      @for (activity of activities; track activity.id) {
+        <mat-option [value]="activity.id">{{activity.name}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <p> Selected Activity: {{selectedValue}} </p>
+</form>
+
+
 <h2>Button example</h2> 
 <button (click)="postNewEntry()"> Create new entry </button>
 

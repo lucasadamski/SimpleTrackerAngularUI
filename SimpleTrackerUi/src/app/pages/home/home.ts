@@ -2,11 +2,16 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { EntryDto } from '../../models/entry.model';
 import { Entry } from '../../services/entry';
+import { Activity } from '../../models/activity.model';
+import { FormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
   standalone: true,
   templateUrl: './home.html',
   styleUrl: './home.css',
@@ -16,6 +21,12 @@ export class Home {
   public entries: any[] = [];
 
   public foo = 'testowy';
+
+  selectedValue: string = 'Select activity';
+
+  activities: Activity[] = [ // todo read all activities from service
+    {id: 1, name: 'Running', unitId: 1, userId:'test'}
+  ];
 
 
   constructor(private entryService: Entry) {

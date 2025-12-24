@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
+import { Activity } from '../models/activity.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class ActivityService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllActivities(): Observable<any> {
-    return this.http.get<Observable<any>>(this.apiUrl + '/GetAll');
+  public getAllActivities(): Observable<Activity[]> {
+    return this.http.get<Activity[]>(this.apiUrl + '/GetAll');
   }
 }

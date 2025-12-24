@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { EntryDto } from '../../models/entry.model';
 import { Entry } from '../../services/entry';
 import { Activity } from '../../models/activity.model';
@@ -8,11 +8,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ActivityService } from '../../services/activity-service';
 
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-home',
@@ -30,20 +25,15 @@ export class Home {
 
   selectedValue: string = 'Select activity';
 
-  
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
-  
   constructor(private entryService: Entry, private activityService: ActivityService) {
     entryService.get().subscribe(elements => {
       this.entries = elements;
+      console.log(`Entries: ${this.entries}`);
     });
     
     activityService.getAllActivities().subscribe(elements => {
       this.activities = elements;
+      console.log(`Activities: ${this.activities}`);
     });
   }
   

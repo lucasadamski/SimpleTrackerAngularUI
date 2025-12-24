@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { EntryDto } from '../../models/entry.model';
 import { Entry } from '../../services/entry';
 import { Activity } from '../../models/activity.model';
@@ -7,7 +6,13 @@ import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ActivityService } from '../../services/activity-service';
 
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -19,22 +24,29 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 export class Home {
   protected readonly title = 'MyApplicationTesting'
   public entries: any[] = [];
+  public activities: Activity[] = [];
 
   public foo = 'testowy';
 
   selectedValue: string = 'Select activity';
 
-  activities: Activity[] = [ // todo read all activities from service
-    {id: 1, name: 'Running', unitId: 1, userId:'test'}
+  
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
   ];
-
-
-  constructor(private entryService: Entry) {
+  
+  constructor(private entryService: Entry, private activityService: ActivityService) {
     entryService.get().subscribe(elements => {
       this.entries = elements;
     });
+    
+    activityService.getAllActivities().subscribe(elements => {
+      this.activities = elements;
+    });
   }
-
+  
   public postNewEntry() {
     const payload: EntryDto = {
       value: 124,

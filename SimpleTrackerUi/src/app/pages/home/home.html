@@ -8,20 +8,11 @@
   </head>
   <body>
 
-{{ entries[0].Value }}
 
-<div class="container-fluid">
-    <div class="row p-2">
-        @for (item of entries; track $index) {
-            <div class="col m-1 p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-5">
-                <p>{{ item.value }} {{ item.unit }} of {{ item.activity }} was added at {{ item.dateAdded }}</p>
-            </div>
-        }
 
-    </div>
-</div>
 
-<mat-form-field>
+@if (activities.length) {
+<mat-form-field  >
   <mat-label>Choose Activity</mat-label>
 
   <mat-select [(ngModel)]="selectedValue" name="activity">
@@ -32,6 +23,8 @@
     }
   </mat-select>
 </mat-form-field>
+}  
+
 
 <p>Selected Activity: {{ selectedValue }}</p>
 

@@ -7,11 +7,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ActivityService } from '../../services/activity-service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
+  imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule, CommonModule],
   standalone: true,
   templateUrl: './home.html',
   styleUrl: './home.css',
@@ -26,10 +27,10 @@ export class Home {
   selectedValue: string = 'Select activity';
 
   constructor(private entryService: Entry, private activityService: ActivityService) {
-    entryService.get().subscribe(elements => {
-      this.entries = elements;
-      console.log(`Entries: ${this.entries}`);
-    });
+    // entryService.get().subscribe(elements => {
+    //   this.entries = elements;
+    //   console.log(`Entries: ${this.entries}`);
+    // });
     
     activityService.getAllActivities().subscribe(elements => {
       this.activities = elements;

@@ -1,0 +1,12 @@
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* spacing between items */
+}
+
+.grid-item {
+  flex: 0 0 calc(20% - 16px);
+  background: #f2f2f2;
+  padding: 16px;
+  border-radius: 8px;
+}

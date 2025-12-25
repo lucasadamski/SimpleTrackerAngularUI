@@ -8,11 +8,12 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ActivityService } from '../../services/activity-service';
 import { CommonModule } from '@angular/common';
+import { Stats } from "../../components/stats/stats";
 
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule, CommonModule],
+  imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule, CommonModule, Stats, Stats],
   standalone: true,
   templateUrl: './home.html',
   styleUrl: './home.css',

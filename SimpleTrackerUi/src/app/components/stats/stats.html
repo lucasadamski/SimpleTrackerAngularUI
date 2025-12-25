@@ -1,21 +1,21 @@
-@if(allActivitiesForUser().length > 0) {
+@if(allActivitiesQuickStats().length > 0) {
 
   <div class="grid-container">
-    @for(activity of allActivitiesForUser(); track activity.id){
+    @for(activity of allActivitiesQuickStats(); track activity.activityName){
     <div class="grid-item">
-      {{ activity.name }}
+      {{ activity.activityName }}
     </div>
     <div class="grid-item">
-      <p>Today</p>
+      <p>Today {{ activity.todayValue }} {{ activity.unitName }}</p>
     </div>
     <div class="grid-item">
-      <p>This week</p>
+      <p>This week {{ activity.thisWeekValue }} {{ activity.unitName }}</p>
     </div>
     <div class="grid-item">
-      <p>This month</p>
+      <p>This month {{ activity.thisMonthValue }} {{ activity.unitName }}</p>
     </div>
      <div class="grid-item">
-      <p>All time</p>
+      <p>All time {{ activity.allTimeValue }} {{ activity.unitName }}</p>
     </div>
     }
   </div>

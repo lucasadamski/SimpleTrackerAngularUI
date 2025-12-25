@@ -10,11 +10,14 @@ import { Activity } from '../../models/activity.model';
 })
 export class Stats {
   public allActivitiesForUser = signal<any[]>([]);
+  public allActivitiesQuickStats = signal<any[]>([]);
 
   constructor(private activityService: ActivityService) { 
      activityService.getAllActivities().subscribe(res => {
       this.allActivitiesForUser.set(res);
-      console.log(`Stats component -> ActivitiesForUser ${this.allActivitiesForUser}`);
+    });
+    activityService.getQuickStatsForAll().subscribe(res => {
+      this.allActivitiesQuickStats.set(res);
     });
   }
 }

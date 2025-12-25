@@ -8,12 +8,12 @@
   </head>
   <body>
 
-@if (activities.length) {
+@if (activities().length > 0) {
   <p>
     <mat-form-field  >
     <mat-label>Choose Activity</mat-label>
     <mat-select [(ngModel)]="selectedActivityId" name="activity">
-      @for (activity of activities; track activity.id) {
+      @for (activity of activities(); track activity.id) {
         <mat-option [value]="activity.id">
           {{ activity.name }}
         </mat-option>
@@ -29,17 +29,9 @@
   </mat-form-field>
 }  
 
-
-<p>Selected Activity: {{ selectedActivityId }}</p>
-<p>Selected Value: {{selectedEntryValue}}</p>
-
 <button (click)="createEntry()"> Create new entry </button>
 
 <app-stats></app-stats>
-
-<button class="btn btn-primary">Bootstrap Button</button>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { EntryDto } from '../../models/entry.model';
 import { Entry } from '../../services/entry';
 import { Activity } from '../../models/activity.model';
@@ -21,12 +21,12 @@ import { Stats } from "../../components/stats/stats";
 export class Home {
   protected readonly title = 'MyApplicationTesting'
   public entries: any[] = [];
-  public activities: Activity[] = [];
+  public activities = signal<any[]>([]);
 
   constructor(private entryService: Entry, private activityService: ActivityService) {
-    activityService.getAllActivities().subscribe(elements => {
-      this.activities = elements;
-      console.log(`Activities: ${this.activities}`);
+    activityService.getAllActivities().subscribe(res => {
+      this.activities.set(res);
+      console.log(`Activities: ${this.activities()}`);
     });
   }
   

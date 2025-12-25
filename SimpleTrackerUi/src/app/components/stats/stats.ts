@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivityService } from '../../services/activity-service';
 import { Activity } from '../../models/activity.model';
 
@@ -9,13 +9,12 @@ import { Activity } from '../../models/activity.model';
   styleUrl: './stats.css',
 })
 export class Stats {
-  public allActivitiesForUser: Activity[] = [];
+  public allActivitiesForUser = signal<any[]>([]);
 
   constructor(private activityService: ActivityService) { 
-     activityService.getAllActivities().subscribe(elements => {
-      this.allActivitiesForUser = elements;
+     activityService.getAllActivities().subscribe(res => {
+      this.allActivitiesForUser.set(res);
+      console.log(`Stats component -> ActivitiesForUser ${this.allActivitiesForUser}`);
     });
   }
-
-  
 }

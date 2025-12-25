@@ -1,23 +1,23 @@
-<p>stats works!</p>
+@if(allActivitiesForUser().length > 0) {
 
-<div class="grid-container">
- 
-  @for(activity of allActivitiesForUser; track activity.id){
-  <div class="grid-item">
-    {{ activity.name }}
+  <div class="grid-container">
+    @for(activity of allActivitiesForUser(); track activity.id){
+    <div class="grid-item">
+      {{ activity.name }}
+    </div>
+    <div class="grid-item">
+      <p>Today</p>
+    </div>
+    <div class="grid-item">
+      <p>This week</p>
+    </div>
+    <div class="grid-item">
+      <p>This month</p>
+    </div>
+     <div class="grid-item">
+      <p>All time</p>
+    </div>
+    }
   </div>
-  <div class="grid-item">
-    <p>Today</p>
-  </div>
-  <div class="grid-item">
-    <p>This week</p>
-  </div>
-  <div class="grid-item">
-    <p>This month</p>
-  </div>
-   <div class="grid-item">
-    <p>All time</p>
-  </div>
-  }
-</div>
 
+ }

@@ -22,26 +22,20 @@ export class Home {
   public entries: any[] = [];
   public activities: Activity[] = [];
 
-  public foo = 'testowy';
-
-  selectedValue: string = 'Select activity';
-
   constructor(private entryService: Entry, private activityService: ActivityService) {
-    // entryService.get().subscribe(elements => {
-    //   this.entries = elements;
-    //   console.log(`Entries: ${this.entries}`);
-    // });
-    
     activityService.getAllActivities().subscribe(elements => {
       this.activities = elements;
       console.log(`Activities: ${this.activities}`);
     });
   }
   
-  public postNewEntry() {
+  selectedActivityId: number = 1;
+  selectedEntryValue: number = 0;
+
+  public createEntry() {
     const payload: EntryDto = {
-      value: 124,
-      activityId: 2,
+      value: this.selectedEntryValue,
+      activityId: this.selectedActivityId,
     };
 
     this.entryService.postData(payload).subscribe({

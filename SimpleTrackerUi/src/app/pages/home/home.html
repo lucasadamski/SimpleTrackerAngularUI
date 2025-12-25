@@ -8,31 +8,32 @@
   </head>
   <body>
 
-
-
-
 @if (activities.length) {
-<mat-form-field  >
-  <mat-label>Choose Activity</mat-label>
+  <p>
+    <mat-form-field  >
+    <mat-label>Choose Activity</mat-label>
+    <mat-select [(ngModel)]="selectedActivityId" name="activity">
+      @for (activity of activities; track activity.id) {
+        <mat-option [value]="activity.id">
+          {{ activity.name }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  </p>
 
-  <mat-select [(ngModel)]="selectedValue" name="activity">
-    @for (activity of activities; track activity.id) {
-      <mat-option [value]="activity.id">
-        {{ activity.name }}
-      </mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+  <mat-form-field>
+    <p>
+      <input matInput [(ngModel)]="selectedEntryValue" placeholder="Enter value of entry">
+    </p>
+  </mat-form-field>
 }  
 
 
-<p>Selected Activity: {{ selectedValue }}</p>
+<p>Selected Activity: {{ selectedActivityId }}</p>
+<p>Selected Value: {{selectedEntryValue}}</p>
 
-
-
-
-<h2>Button example</h2> 
-<button (click)="postNewEntry()"> Create new entry </button>
+<button (click)="createEntry()"> Create new entry </button>
 
 <h3>Update example</h3> 
 <button (click)="updateEntry()">Update</button>

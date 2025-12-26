@@ -8,29 +8,7 @@
   </head>
   <body>
 
-@if (activities().length > 0) {
-  <p>
-    <mat-form-field  >
-    <mat-label>Choose Activity</mat-label>
-    <mat-select [(ngModel)]="selectedActivityId" name="activity">
-      @for (activity of activities(); track activity.id) {
-        <mat-option [value]="activity.id">
-          {{ activity.name }}
-        </mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-  </p>
-
-  <mat-form-field>
-    <p>
-      <input matInput [(ngModel)]="selectedEntryValue" placeholder="Enter value of entry">
-    </p>
-  </mat-form-field>
-}  
-
-<button (click)="createEntry()"> Create new entry </button>
-
+<app-new-entry></app-new-entry>
 <app-stats></app-stats>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

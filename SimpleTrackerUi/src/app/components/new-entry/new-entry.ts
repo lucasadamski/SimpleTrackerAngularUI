@@ -28,7 +28,7 @@ protected readonly title = 'MyApplicationTesting'
   
   selectedActivityId: number = 1;
   selectedEntryValue: number = 0;
-
+  
   public createEntry() {
     const payload: EntryDto = {
       value: this.selectedEntryValue,

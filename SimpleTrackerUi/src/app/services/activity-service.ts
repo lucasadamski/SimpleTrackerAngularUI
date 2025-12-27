@@ -20,4 +20,8 @@ export class ActivityService {
   public getQuickStatsForAll(): Observable<ActivityQuickStats[]> {
     return this.http.get<ActivityQuickStats[]>(this.apiUrl + '/GetQuickStatsForAll');
   }
+
+  public createActivity(data: Activity): Observable<any> {
+    return this.http.post<Activity>(this.apiUrl + '/Create', data);
+  }
 }

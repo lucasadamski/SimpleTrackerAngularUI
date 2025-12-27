@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { ActivityService } from '../../services/activity-service';
 import { Activity } from '../../models/activity.model';
+import { Unit } from '../../models/unit';
+import { UnitService } from '../../services/unit-service';
+import { ActivityService } from '../../services/activity-service';
 
 @Component({
   selector: 'app-new-activity',
@@ -9,15 +11,12 @@ import { Activity } from '../../models/activity.model';
   styleUrl: './new-activity.css',
 })
 export class NewActivity {
-  protected readonly title = 'MyApplicationTesting'
-  public entries: any[] = [];
-  public activities = signal<any[]>([]);
-
-  constructor(private activityService: ActivityService) {
-    activityService.getAllActivities().subscribe(res => {
-      this.activities.set(res);
+  public units = signal<any[]>([]);
+ 
+  constructor(private unitService: UnitService, private activityService: ActivityService) {
+    unitService.getAll().subscribe(res => {
+      this.units.set(res);
     });
-    //add units services
   }
   
   unitId = 1;  

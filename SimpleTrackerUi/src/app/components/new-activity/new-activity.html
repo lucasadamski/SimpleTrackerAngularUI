@@ -11,7 +11,7 @@
 
             <mat-form-field>
                 <mat-label>Choose Unit</mat-label>
-                <mat-select [(ngModel)]="selectedUnitId" name="unit">
+                <mat-select [(ngModel)]="unitId" name="unit">
                 @for (unit of units(); track unit.id) {
                     <mat-option [value]="unit.id">
                     {{ unit.name }}

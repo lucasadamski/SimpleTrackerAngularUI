@@ -3,10 +3,15 @@ import { Activity } from '../../models/activity.model';
 import { Unit } from '../../models/unit';
 import { UnitService } from '../../services/unit-service';
 import { ActivityService } from '../../services/activity-service';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-new-activity',
-  imports: [],
+  imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule, CommonModule],
   templateUrl: './new-activity.html',
   styleUrl: './new-activity.css',
 })
@@ -30,7 +35,7 @@ export class NewActivity {
       userId: ''
     };
 
-    this.activityService.createActivity(payload).subscribe({ // activitySsSerice 
+    this.activityService.createActivity(payload).subscribe({
       next: (response) => {
         console.log(response);
       },

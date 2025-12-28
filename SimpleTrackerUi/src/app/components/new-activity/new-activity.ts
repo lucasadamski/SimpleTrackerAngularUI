@@ -32,10 +32,12 @@ export class NewActivity {
       id: 0,
       name: this.activityName,
       unitId: this.unitId,
-      userId: ''
+      userId: 0
     };
 
+
     this.activityService.createActivity(payload).subscribe({
+
       next: (response) => {
         console.log(response);
       },

@@ -22,6 +22,7 @@ export class ActivityService {
   }
 
   public createActivity(data: Activity): Observable<any> {
+    console.log('POST ACTIVITY');
     return this.http.post<Activity>(this.apiUrl + '/Create', data);
   }
 }

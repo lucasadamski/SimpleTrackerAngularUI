@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Auth } from '../../services/auth';
 import { UserStore } from '../../services/user-store';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import ValidateForm from '../../helpers/validationform';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from '../../services/user';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, ReactiveFormsModule ],
+  imports: [FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

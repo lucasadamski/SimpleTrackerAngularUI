@@ -15,4 +15,8 @@ export class User {
     console.log('User login service called');
     return this.http.post<any>(this.apiUrl + '/Login', data);
   }
+
+  signUp(data: any) : Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/SignUp', data);
+  }
 }

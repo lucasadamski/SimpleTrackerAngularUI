@@ -2,10 +2,8 @@
     <div class="login-container">
         <div class="profile-img"></div>
         <h2>Simple Tracker</h2>
-        <p>Please login</p>
+        <p>Sign up</p>
 
-        {{ loginObj.email }}
-    
         <form>
             <div class="input-field">
                 <i>👤</i>
@@ -17,11 +15,7 @@
                 <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password" required>
             </div>
     
-            <button class="btn" type="button" (click)="onLogin()">Login</button>
-    
-            <div class="options">
-                Forgot password? <a href="#">or Sign Up</a>
-            </div>
+            <button class="btn" type="button" (click)="onSignUp()">Create account</button>
         </form>
     </div>
 </div>

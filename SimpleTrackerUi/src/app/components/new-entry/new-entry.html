@@ -1,28 +1,19 @@
 
 
 @if (activities().length > 0) {
-
     <div class="wrapper">
-
-        <h3>Create new entry:</h3>
-        <div class="new-entry-container">
-            <mat-form-field  >
-                <mat-label>Choose Activity</mat-label>
-                <mat-select [(ngModel)]="selectedActivityId" name="activity">
+        <h3>New Entry</h3>
+        <div class="d-flex align-items-center gap-2">
+            <select class="form-select" style="max-width: 200px;" [(ngModel)]="selectedActivityId" name="activity">
                 @for (activity of activities(); track activity.id) {
-                    <mat-option [value]="activity.id">
-                    {{ activity.name }}
-                    </mat-option>
+                    <option [value]="activity.id">
+                        {{ activity.name }}
+                    </option>
                 }
-                </mat-select>
-            </mat-form-field>
-          
-            <mat-form-field>
-                <input matInput [(ngModel)]="selectedEntryValue" placeholder="Enter value of entry">
-            </mat-form-field>
-            <button class="btn btn-primary" (click)="createEntry()"> Create </button>
+            </select>
+            <input type="text" class="form-control" placeholder="Numerical value, eg. 1, 5, 20..." [(ngModel)]="selectedEntryValue">
+            <button class="btn btn-primary" (click)="createEntry()">Submit</button>
         </div>
-
     </div>
 }  
 

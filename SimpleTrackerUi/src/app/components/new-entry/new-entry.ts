@@ -27,7 +27,7 @@ protected readonly title = 'MyApplicationTesting'
   }
   
   selectedActivityId: number = 1;
-  selectedEntryValue: number = 0;
+  selectedEntryValue: any = '';
   
   public createEntry() {
     const payload: EntryDto = {

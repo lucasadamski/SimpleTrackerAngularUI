@@ -17,6 +17,6 @@ export class User {
   }
 
   signUp(data: any) : Observable<any> {
-    return this.http.post<any>(this.apiUrl + '/SignUp', data);
+    return this.http.post<any>(this.apiUrl + '/Create', data);
   }
 }

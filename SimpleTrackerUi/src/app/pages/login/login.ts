@@ -71,6 +71,7 @@ export class Login implements OnInit {
       this.userApi.loginUser(this.loginObj).subscribe({
       next: (response) => {
         console.log('response successful: ' + response);
+        this.store.setFullName(this.loginObj.login);
         this.router.navigate(['home']);
         this.auth.storeToken(response.token);
         // write token to storage 

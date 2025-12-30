@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Auth } from '../../services/auth';
 import { User } from '../../services/user';
 import { Router } from '@angular/router';
+import { UserStore } from '../../services/user-store';
 
 @Component({
   selector: 'app-signup',
@@ -24,7 +25,8 @@ export class Signup {
   constructor(private auth: Auth, 
     private formBuilder: FormBuilder,
     private userService: User,
-    private router: Router) {}
+    private router: Router,
+    private userStore: UserStore) {}
 
     ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -36,6 +38,7 @@ export class Signup {
   onSignUp() {
     this.userService.signUp(this.loginObj).subscribe({
       next: (res) => {
+        this.userStore.setFullName(this.loginObj.login);
         this.router.navigate(['home']);
         this.auth.storeToken(res.token);
       },

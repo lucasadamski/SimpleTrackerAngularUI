@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { UserStore } from '../../services/user-store';
 
 @Component({
   selector: 'app-navbar',
@@ -9,5 +10,15 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.css',
 })
 export class Navbar {
+
+  public loginName = signal<string>('');
+
+  constructor(private userStore: UserStore) {
+     userStore.getFullName().subscribe(res => {
+      this.loginName.set(res)
+  });
+  }
+
+  
 
 }

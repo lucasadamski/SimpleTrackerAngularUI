@@ -1,27 +1,18 @@
 @if (units().length > 0) {
 
     <div class="wrapper">
-
         <h3>Create new activity:</h3>
-        <div class="new-activity-container">
-
-            <mat-form-field>
-                <input matInput [(ngModel)]="activityName" placeholder="Enter name of activity">
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Choose Unit</mat-label>
-                <mat-select [(ngModel)]="unitId" name="unit">
+        <div class="d-flex align-items-center gap-2">
+            <input type="text" class="form-control" placeholder="Name of new activity" [(ngModel)]="activityName">
+            <select name="unit" id="" class="form-select">
                 @for (unit of units(); track unit.id) {
-                    <mat-option [value]="unit.id">
-                    {{ unit.name }}
-                    </mat-option>
+                    <option [value]="unit.id">
+                        {{ unit.name }}
+                    </option>
                 }
-                </mat-select>
-            </mat-form-field>
-            
+            </select>
             <button class="btn btn-primary" (click)="createActivity()">Create</button>
         </div>
-
     </div>
+    
 }  

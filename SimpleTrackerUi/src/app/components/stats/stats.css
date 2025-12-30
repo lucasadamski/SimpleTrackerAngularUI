@@ -2,9 +2,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px; 
-  width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 .grid-item {
@@ -17,3 +19,5 @@
 h3 {
   text-align: center;
 }
+
+

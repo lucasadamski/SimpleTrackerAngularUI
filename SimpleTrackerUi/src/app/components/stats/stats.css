@@ -2,11 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px; 
-  
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-bottom: 2%;
-    margin-top: 2%;
 }
 
 .grid-item {

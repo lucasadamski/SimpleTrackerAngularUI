@@ -1,6 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { ActivityService } from '../../services/activity-service';
 import { Activity } from '../../models/activity.model';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
   selector: 'app-stats',
@@ -16,8 +21,14 @@ export class Stats {
      activityService.getAllActivities().subscribe(res => {
       this.allActivitiesForUser.set(res);
     });
-    activityService.getQuickStatsForAll().subscribe(res => {
+    this.updateQuicStats();
+  }
+
+  public updateQuicStats() {
+    this.activityService.getQuickStatsForAll().subscribe(res => {
       this.allActivitiesQuickStats.set(res);
     });
+    console.log('updateQuicStats()');
   }
+
 }

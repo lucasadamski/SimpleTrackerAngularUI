@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl : 'https://localhost:7168/api'
+    apiUrl : 'https://simpletrackerapi.lucasadamsblog.com/api'
 };

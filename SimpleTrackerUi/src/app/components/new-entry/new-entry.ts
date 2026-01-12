@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { Stats } from '../stats/stats';
+import { ReloadService } from '../../services/reload-service';
 
 @Component({
   selector: 'app-new-entry',
@@ -20,7 +21,7 @@ protected readonly title = 'MyApplicationTesting'
   public entries: any[] = [];
   public activities = signal<any[]>([]);
 
-  constructor(private entryService: Entry, private activityService: ActivityService, private statsPage: Stats) {
+  constructor(private entryService: Entry, private activityService: ActivityService, private reloadComponents: ReloadService) {
     activityService.getAllActivities().subscribe(res => {
       this.activities.set(res);
       console.log(`Activities: ${this.activities()}`);
@@ -39,11 +40,7 @@ protected readonly title = 'MyApplicationTesting'
     this.entryService.postData(payload).subscribe({
       next: (response) => {
         console.log(response);
-        this.statsPage.updateQuicStats(); // todo reaload the whole p;age
-      },
-      error: (response) => {
-        console.error(response);
-      }
-    });
+        this.reloadComponents.triggerReload();
+    }});
   }
 }

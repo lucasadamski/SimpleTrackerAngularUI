@@ -27,6 +27,19 @@ protected readonly title = 'MyApplicationTesting'
       console.log(`Activities: ${this.activities()}`);
     });
   }
+
+  ngOnInit() {
+    this.reloadComponents.reload$.subscribe(() => {
+      this.updateActivities();
+    });
+  }
+
+  private updateActivities() {
+    this.activityService.getAllActivities().subscribe(res => {
+      this.activities.set(res);
+      console.log(`Updated activities in new entry dropdown`);
+    });
+  }
   
   selectedActivityId: number = 1;
   selectedEntryValue: any = '';

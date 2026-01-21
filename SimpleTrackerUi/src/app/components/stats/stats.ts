@@ -19,7 +19,7 @@ export class Stats {
   public allActivitiesQuickStats = signal<any[]>([]);
 
   constructor(private activityService: ActivityService, private reloadService: ReloadService) { 
-     activityService.getAllActivities().subscribe(res => {
+     activityService.getQuickStatsComparedForAll().subscribe(res => {
       this.allActivitiesForUser.set(res);
     });
 

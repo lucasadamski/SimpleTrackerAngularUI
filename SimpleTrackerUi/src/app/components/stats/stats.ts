@@ -3,6 +3,7 @@ import { ActivityService } from '../../services/activity-service';
 import { Activity } from '../../models/activity.model';
 import { Injectable } from '@angular/core';
 import { ReloadService } from '../../services/reload-service';
+import { ActivityQuickStatsCompared } from '../../models/activity-quick-stats-compared';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +17,10 @@ import { ReloadService } from '../../services/reload-service';
 })
 export class Stats {
   public allActivitiesForUser = signal<any[]>([]);
-  public allActivitiesQuickStats = signal<any[]>([]);
+  public allActivitiesQuickStats = signal<ActivityQuickStatsCompared[]>([]);
 
   constructor(private activityService: ActivityService, private reloadService: ReloadService) { 
-     activityService.getQuickStatsComparedForAll().subscribe(res => {
+     activityService.getAllActivities().subscribe(res => {
       this.allActivitiesForUser.set(res);
     });
 
@@ -33,7 +34,7 @@ export class Stats {
   }
 
   public updateQuicStats() {
-    this.activityService.getQuickStatsForAll().subscribe(res => {
+    this.activityService.getQuickStatsComparedForAll().subscribe(res => {
       this.allActivitiesQuickStats.set(res);
     });
     console.log('updateQuicStats()');

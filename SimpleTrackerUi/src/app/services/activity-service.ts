@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { Activity } from '../models/activity.model';
 import { ActivityQuickStats } from '../models/activity-quick-stats';
+import { ActivityQuickStatsCompared } from '../models/activity-quick-stats-compared';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,11 @@ export class ActivityService {
   public getQuickStatsForAll(): Observable<ActivityQuickStats[]> {
     return this.http.get<ActivityQuickStats[]>(this.apiUrl + '/GetQuickStatsForAll');
   }
+
+  public getQuickStatsComparedForAll(): Observable<ActivityQuickStatsCompared[]> {
+    return this.http.get<ActivityQuickStatsCompared[]>(this.apiUrl + '/GetQuickStatsForAllCompareWithPreviousDays');
+  }
+
 
   public createActivity(data: Activity): Observable<any> {
     console.log('POST ACTIVITY');
